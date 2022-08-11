@@ -1,0 +1,3 @@
+- parts of dist folder doesn't get ignored upon including the entire sub directory in .gitignore
+- install clean-webpack-plugin and fix the bug that cleans out the dist folder when webpack-dev-server is started
+- install minicsswebpack plugin to extract all used css into a bundle
