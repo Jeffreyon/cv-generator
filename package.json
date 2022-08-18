@@ -10,10 +10,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "browser": {
+    "fs": false
+  },
   "dependencies": {
     "bootstrap": "^5.2.0",
     "docxtemplater": "^3.31.2",
     "file-saver": "^2.0.5",
+    "jquery": "^3.6.0",
     "pizzip": "^3.1.1"
   },
   "devDependencies": {

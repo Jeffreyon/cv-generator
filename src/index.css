@@ -1,2 +1,26 @@
-@import '/dist/main.css'
+fieldset>div{
+    margin-bottom: 10px;
+}
 
+fieldset>div>label {
+    margin-bottom: 5px;
+}
+
+form>div {
+    margin-top: 35px;
+}
+
+form fieldset {
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+form fieldset:not(form fieldset:first-child) {
+    border-top: 1px solid #d6d6d6;
+}
+
+@media (min-width: 750px) {
+    form.form-md {
+        min-width: 500px;
+    }
+}

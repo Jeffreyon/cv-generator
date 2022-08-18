@@ -1,12 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resume(CV) Generator</title>
 <script defer src="bundle.js"></script><link href="main.css" rel="stylesheet"></head>
-<body>
-    <button class="btn btn-primary" id="generate">Generate document</button>
+
+<body class="container">
+    <div class="row">
+        <form class="col-xs-12 col-md-6 my-5 m-auto form-md">
+            <h1 class="text-center">Resume Generator</h1>
+            <div id="profile-information" class="bg-light p-5 rounded-2">
+                <h3>Profile Information</h3>
+                <div>
+                    <fieldset class="user-name">
+                        <div>
+                            <label for="first-name">First name</label>
+                            <input type="text" placeholder="eg: John" class="form-control" required>
+                        </div>
+                        <div>
+                            <label for="last-name">Last name</label>
+                            <input type="text" placeholder="eg: Doe" class="form-control" required>
+                        </div>
+                        <div>
+                            <label for="middle-name">Middle name</label>
+                            <input type="text" placeholder="eg: Doe" class="form-control">
+                        </div>
+                    </fieldset>
+                    <fieldset class="personal-details">
+                        <div>
+                            <label for="dob">Date of birth</label>
+                            <input type="date" name="dob" id="dob" class="form-control">
+                        </div>
+                        <div>
+                            <label for="state-of-origin">State of Origin</label>
+                            <select name="state-of-origin" id="state-of-origin" class="form-control">
+                                <option value="abia">Abia</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="lga">LGA</label>
+                            <select name="lga" id="lga" class="form-control">
+                                <option value="nnewi">Nnewi</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="gender">Gender</label>
+                            <select name="gender" id="gender" class="form-control">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="marital-status">Marital Status</label>
+                            <select name="marital-status" id="marital-status" class="form-control">
+                                <option value="single">Single</option>
+                                <option value="married">Married</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="religion">Religion</label>
+                            <select name="religion" id="religion" class="form-control">
+                                <option value="christianity">Christianity</option>
+                                <option value="islam">Islam</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <fieldset class="contact">
+                        <div>
+                            <label for="address">Address</label>
+                            <textarea name="address" id="address" class="form-control"></textarea>
+                        </div>
+                        <div>
+                            <label for="phone">Phone</label>
+                            <input type="tel" name="phone" class="form-control">
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div id="educational-history" class="bg-light p-5 rounded-2">
+                <h3>Educational History</h3>
+                <div>
+                    <fieldset class="school-details">
+                        <div>
+                            <label for="name-of-institute">Name of institute</label>
+                            <input type="text" name="name-of-institute" class="form-control">
+                        </div>
+                        <div>
+                            <label for="location">Location</label>
+                            <input type="text" name="location" class="form-control">
+                        </div>
+                        <div>
+                            <label for="type">Type of institute</label>
+                            <select name="type" id="type" class="form-control">
+                                <option value="primary">Primary / Elementary</option>
+                                <option value="secondary">Secondary / High school</option>
+                                <option value="tertiary">University / Polytechnic / College</option>
+                                <option value="post-graduate">University / Polytechnic / College</option>
+                                <option value="course">Course / Bootcamp / Workshop</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="qualifiction">Qualification Obtained</label>
+                            <select name="qualification" id="qualification" class="form-control">
+                                <option value="fslc">FSLC</option>
+                                <option value="ssce">SSCE</option>
+                                <option value="neco">NECO</option>
+                                <option value="bsc">B. Sc</option>
+                                <option value="nd">ND</option>
+                                <option value="msc">M. Sc</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="started">Started</label>
+                            <input type="date" name="started" id="started" class="form-control">
+                        </div>
+                        <div>
+                            <label for="finished">Finished</label>
+                            <input type="date" name="finished" id="finished" class="form-control">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div id="work-experience"  class="bg-light p-5 rounded-2">
+                <h3>Work Experience</h3>
+                <div>
+                    <fieldset class="work-details">
+                        <div>
+                            <label for="name-of-organization">Name of organization</label>
+                            <input type="text" name="name-of-organization" class="form-control">
+                        </div>
+                        <div>
+                            <label for="position">Position</label>
+                            <input type="text" name="position" class="form-control">
+                        </div>
+                        <div>
+                            <label for="from">From</label>
+                            <input type="date" name="from" class="form-control">
+                        </div>
+                        <div>
+                            <label for="to">To</label>
+                            <input type="date" name="to" class="form-control">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div id="skills"  class="bg-light p-5 rounded-2">
+                <h3>Skills</h3>
+                <div>
+                    <fieldset class="skill">
+                        <input type="text" name="skill" class="form-control">
+                    </fieldset>
+                </div>
+            </div>
+            <div id="referees"  class="bg-light p-5 rounded-2">
+                <h3>Referees</h3>
+                <div>
+                    <fieldset class="referee-details">
+                        <div>
+                            <label for="referee-name">Name</label>
+                            <input type="text" name="referee-name" class="form-control">
+                        </div>
+                        <div>
+                            <label for="referee-organization">Organization</label>
+                            <input type="text" name="referee-organization" class="form-control">
+                        </div>
+                        <div>
+                            <label for="referee-position">Position</label>
+                            <input type="text" name="referee-position" class="form-control">
+                        </div>
+                        <div>
+                            <label for="referee-contact">Contact</label>
+                            <input type="text" name="referee-contact" class="form-control">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3 w-100" id="generate">Generate Resume</button>
+        </form>
+    </div>
 </body>
+
 </html>

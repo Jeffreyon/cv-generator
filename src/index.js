@@ -1,10 +1,16 @@
+// js
 import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle"
+import * as fs from 'fs'
 
-// import templates
+// css
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle";
+import './index.css';
+
+
+// templates
 import simpleTemplate from './templates/simple.docx'
 let templates = [
     {
@@ -12,6 +18,8 @@ let templates = [
         path: simpleTemplate
     }
 ]
+
+fs.readFileSync()
 
 document.getElementById('generate').addEventListener('click', function (){
 
@@ -93,9 +101,7 @@ async function generateResume(resumeObj, template){
         let doc = await createDocFromTemplate(templatePath);
 
         // using the template, fill in the user's form submission
-        doc.render({
-            name: {first: "keyy"}
-        });
+        doc.render(resume);
 
         // turn the zip file into a blob object with a mimetype for docx documents
         let out = doc.getZip().generate({
