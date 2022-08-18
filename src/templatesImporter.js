@@ -6,7 +6,7 @@ let templates = [
 templates = templates.map(function(t){
     return {
         path: t,
-        name: t.split('/').pop()
+        name: t.split('/').pop().split('.')[0] // split the path to get the filename, then get the actual name without the ext
     }
 })
 

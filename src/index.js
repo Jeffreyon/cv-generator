@@ -10,10 +10,9 @@ import './index.css';
 
 // templates
 import {templates} from './templatesImporter.js';
-import simpleTemplate from './templates/simple.docx';
-
 console.log(templates)
 
+// App
 document.getElementById('generate').addEventListener('click', function (){
 
     let resume = {
@@ -94,7 +93,7 @@ async function generateResume(resumeObj, template){
         let doc = await createDocFromTemplate(templatePath);
 
         // using the template, fill in the user's form submission
-        doc.render(resume);
+        doc.render(resumeObj);
 
         // turn the zip file into a blob object with a mimetype for docx documents
         let out = doc.getZip().generate({

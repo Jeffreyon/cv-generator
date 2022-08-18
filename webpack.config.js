@@ -7,7 +7,8 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        clean: true
     },
     devServer: {
         static: './',
@@ -20,8 +21,15 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
-            test: /\.(docx|png|jp(e)g)$/i,
+                test: /\.(png|jp(e)g)$/i,
                 type: 'asset/resource'
+            },
+            {
+                test: /\.docx$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: '[name].docx'
+                }
             }
         ],
     },
