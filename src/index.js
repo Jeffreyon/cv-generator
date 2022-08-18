@@ -2,24 +2,17 @@
 import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
-import * as fs from 'fs'
 
 // css
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import './index.css';
 
-
 // templates
-import simpleTemplate from './templates/simple.docx'
-let templates = [
-    {
-        name: "simple",
-        path: simpleTemplate
-    }
-]
+import {templates} from './templatesImporter.js';
+import simpleTemplate from './templates/simple.docx';
 
-fs.readFileSync()
+console.log(templates)
 
 document.getElementById('generate').addEventListener('click', function (){
 

@@ -10,9 +10,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "browser": {
-    "fs": false
-  },
   "dependencies": {
     "bootstrap": "^5.2.0",
     "docxtemplater": "^3.31.2",
