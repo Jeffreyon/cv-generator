@@ -1,13 +1,21 @@
 - parts of dist folder doesn't get ignored upon including the entire sub directory in .gitignore
-- install clean-webpack-plugin and fix the bug that cleans out the dist folder when webpack-dev-server is started
 - learn how to optimize webpack
-- source the documentation for how to fill in placeholders in docxtemplater
 - validate resume object using validator module from npm
 - customize bootstrap design system
-- learn how to use bootstrap with relevant tutorials
+- install font-awesome
+- install lodash to enable capitalization of field values
+- use javascript to set the value of 'still-attending' checkboxes
+- create a much cleaner way to read form data
+- add conditional logic to the middle-name section in the template so it can be shown depending if the value is present
+- scrape data for the select fields form data
+- learn how to clone jquery elements with a default state in the app
 
 
 ## Expand knowledge
 - TypeScript and linting
 - Webpack and the build tools ecosystem
 - Bootstrap
+- Learn how to build a component that can take multiple sets of data, like a section of schools attended with controls to delete or reorder them in a list
+- Imagine using javascript to build html forms
+- learn how to use bootstrap with relevant tutorials
+- learn how to use handlebars templating in webpack

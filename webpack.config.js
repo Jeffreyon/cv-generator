@@ -25,6 +25,10 @@ module.exports = {
                 type: 'asset/resource'
             },
             {
+                test: /\.(eot|woff2|woff|ttf|svg)$/i,
+                type: 'asset/resource'
+            },
+            {
                 test: /\.docx$/i,
                 type: 'asset/resource',
                 generator: {

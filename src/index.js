@@ -2,81 +2,176 @@
 import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
+import * as $ from 'jquery';
 
 // css
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import './index.css';
+import '../fontawesome/css/all.css'
 
 // templates
 import {templates} from './templatesImporter.js';
-console.log(templates)
 
-// App
-document.getElementById('generate').addEventListener('click', function (){
+// form-data
+import * as formData from './form-data.js'
 
-    let resume = {
-        name: {
-            first: 'john',
-            last: 'doe',
-            others: ['A.']
-        },
-        meta_details: {
-            dateOfBirth: '24th June, 1995',
-            stateOfOrigin: 'enugu',
-            lga: 'oji-river',
-            gender: 'male',
-            marital_status: 'single',
-            religion: 'christian',
-            nationality: 'nigerian',
-            contact: {
-                address: "Somewhere on planet earth",
-                phone: '12384949448',
-                email: 'johndoe@gmail.com'
-            }
-        },
-        education: [
-            {
-                name: 'university of nigeria, nsukka',
-                location: 'Nsukka, Enugu',
-                type: 'tertiary',
-                qualificationObtained: 'B.Sc Computer Science',
-                started: '18th February, 2017',
-                finished: 'present or 6th July, 2022'
-            },
-            {
-                name: 'nigerian navy secondary school',
-                location: 'Borikiri, Port-Harcourt',
-                type: 'secondary',
-                qualificationObtained: 'SSCE',
-                started: '18th February, 2011',
-                finished: 'present or 6th July, 2027'
-            }
-        ],
-        workExperience: [
-            {
-                nameOfOrg: 'Acme Inc.',
-                position: 'software developer',
-                from: 'July, 2022',
-                to: 'Present'
-            }
-        ],
-        skills: ["UIUX Design", "Prototyping"],
-        hobbies: ['reading tech magazines', 'archery', "swimming"],
-        referees: [
-            {
-                name: "Big man",
-                nameOfOrg: 'big man inc',
-                position: 'big man position',
-                contact: 'email or phone number'
-            }
-        ]
+
+function fillFormData (select, selectVals, ...rest) {
+    if(!rest.length){
+        selectVals.forEach(function(el, index){
+            select.append(`<option value="${el}">${el}</option>`);
+        })
+    } else {
+        selectVals.forEach(function(el, index){
+            select.append(`<option value="${el.name}">${el.name}</option>`);
+        })
         
-    }
+        let update = rest[0];
 
-    generateResume(resume, "simple");
+        select.on('change', function(){
+            let values = selectVals.find((el, index) => {
+                return (el.name == select.val())
+            }).values;
+            
+            update.children().remove()
+            update.append(`<option value="" disabled selected>Choose...</option>`);
+    
+            values.forEach(function(val){
+                update.append(`<option value="${val}">${val}</option>`);
+            })
+        })
+    }
+}
+
+$(window).on('load', function(){
+    // build states options in select
+    let statesSelect = $('select[name="state-of-origin"]');
+    let lgaSelect = $('select[name="lga"]');
+    let instituteSelect = $('select[name="type-of-institute"]');
+    let qualificationSelect = $('select[name="qualification"]');
+    let genderSelect = $('select[name="gender"]');
+    let maritalStatusSelect = $('select[name="marital-status"]');
+    let religionSelect = $('select[name="religion"]');
+
+    fillFormData(statesSelect, formData.states, lgaSelect);
+    fillFormData(instituteSelect, formData.typesOfInstitute, qualificationSelect);
+    fillFormData(genderSelect, formData.genders)
+    fillFormData(maritalStatusSelect, formData.maritalStatus)
+    fillFormData(religionSelect, formData.religion)
 })
 
+
+
+// Dom manipulation
+$('.add-section').on('click', function(e){
+    e.preventDefault()
+    // get the list of fieldsets that are descendants of the sibling div to this element
+    let sectionsContainer = $(this).prev('div');
+    
+    // duplicate the first element and reset its inputs and append it to the sibling div
+    sectionsContainer.children('fieldset').first().clone(true).hide().appendTo(sectionsContainer).slideToggle(100).find('input').each(function(){
+        $(this).val(null);
+    })
+
+    // add an event handler to the remove buttons
+    $('.remove-section').on('click', function(e){
+        e.preventDefault();
+
+        // remove the parent fieldset from the dom when its remove button is clicked
+        $(this).closest('fieldset').slideToggle(100, function(){
+            $(this).remove();
+        })
+
+        // hack for hiding the remove button of the last fieldset
+        if(sectionsContainer.children().length == 2) {
+            sectionsContainer.children().not($(this).closest('fieldset')).children('div.section-control').addClass('d-none');
+        }
+    })
+
+    if(sectionsContainer.children().length > 1){
+        if(sectionsContainer.children().length == 2) sectionsContainer.children().first().children('div.section-control').removeClass('d-none');
+        sectionsContainer.children().last().children('div.section-control').removeClass('d-none');
+    } else {
+        sectionsContainer.children('fieldset').first().addClass('d-none')
+    }
+});
+
+$('.still-attending').on('click', function(e){
+    let finished = $(this).parent().prev("input")
+    
+    if(!finished.attr('readonly')) {
+        finished.attr('readonly', true).attr("type", "text").val("Present").parent().addClass('disabled')
+    } else {
+        finished.removeAttr('readonly').attr("type", "date").parent().removeClass('disabled')
+    }
+})
+
+
+
+document.getElementById('generate').addEventListener('click', function (e){
+    e.preventDefault();
+
+    // convert the result of jquery serializeArray function into a plain object
+    function arrToObj(arr){
+        let obj = {}
+        arr.forEach(function(key){
+
+            // if key value is empty, null or undefined, skip it
+            if(key.value == undefined || key.value == "") return;
+
+            // if key is a date field, format the value
+            switch (key.name) {
+                case "started":
+                case "work-start":
+                case "finished":
+                case "work-end":
+                    return obj[key.name] = dateToStr(key.value, 'my')
+                case "dob":
+                    return obj[key.name] = dateToStr(key.value, 'mdy')
+                default: return obj[key.name] = key.value;
+            }
+        })
+
+        return obj;
+    }
+
+    function getSection(section){
+        let all = []
+        $(`${section} fieldset`).each(function(){
+            let set = arrToObj($(this).find('input, select').serializeArray())
+
+            if(Object.keys(set).length == 0) return;
+            
+            all.push(set);
+        })
+        return all;
+    }
+
+    function dateToStr(date, format){
+        if(date == 'Present') return date;
+
+        let userDate = new Date(date).toDateString().split(' ').slice(-3);
+
+        if(format == 'mdy') return userDate[0] + ' ' + userDate[1] + ', ' + userDate[2];
+        else if(format == 'my') return userDate[0] + ' ' + userDate[2];
+    }
+
+    let profile = getSection('#profile-information')
+
+    // if profile.length is not 3, terminate program
+    
+    let resume = {
+        name: profile[0],
+        profile: profile[1],
+        contact: profile[2],
+        educationalHistory: getSection('#educational-history'),
+        workExperience: getSection('#work-experience'),
+        referees: getSection('#referees')
+    }
+
+    return generateResume(resume, "simple");
+})
 
 // on submit, retrieve and organize the resume object then pass it and a template name to a generate function
 
@@ -103,7 +198,7 @@ async function generateResume(resumeObj, template){
         })
 
         // prompt user to save the file
-        saveAs(out, `${resumeObj.name.first} resume.docx`);
+        return saveAs(out, `${resumeObj.name['first-name']}'s resume.docx`);
     }
 }
 
@@ -134,4 +229,29 @@ async function loadTemplate(path) {
 
     let content = await response.arrayBuffer();
     return content;
+}
+
+function populate() {
+    return {
+        name: {
+            "first-name": "Jeffrey",
+            "last-name": "Onuigbo"
+        },
+        profile: {
+            "dob": "Sep 24, 2000",
+            "gender": "male",
+            "religion": "christianity"
+        },
+        contact: {
+            "address": "Abacha Rd, Nasarawa",
+            "phone": "08085709543",
+            "email": "jeffreyon11@gmail.com"
+        },
+        educationalHistory: [
+            {
+                "name-of-institute": "University of Nigeria Nsukka",
+                "location": "Enugu"
+            }
+        ]
+    }
 }

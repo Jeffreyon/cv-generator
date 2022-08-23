@@ -8,181 +8,189 @@
     <title>Resume(CV) Generator</title>
 </head>
 
-<body class="container">
+<body class="container bg-light">
     <div class="row">
-        <form class="col-xs-12 col-md-6 my-5 m-auto form-md">
-            <h1 class="text-center">Resume Generator</h1>
-            <div id="profile-information" class="bg-light p-5 rounded-2">
+        <form class="col-xs-12 col-md-8 my-5 m-auto form-md">
+            <h1 class="text-center">Create a <span class="text-primary">Beautiful Resume</span> in 2 mins</h1>
+            <div id="profile-information" class="p-5 rounded-2">
                 <h3>Profile Information</h3>
                 <div>
-                    <fieldset class="user-name">
-                        <div>
+                    <fieldset class="user-name row gx-3">
+                        <div class="col-4">
                             <label for="first-name">First name</label>
-                            <input type="text" placeholder="eg: John" class="form-control" required>
+                            <input type="text" placeholder="eg: John" class="form-control" name="first-name" required>
                         </div>
-                        <div>
+                        <div class="col-4">
                             <label for="last-name">Last name</label>
-                            <input type="text" placeholder="eg: Doe" class="form-control" required>
+                            <input type="text" placeholder="eg: Doe" class="form-control" name="last-name">
                         </div>
-                        <div>
-                            <label for="middle-name">Middle name</label>
-                            <input type="text" placeholder="eg: Doe" class="form-control">
+                        <div class="col-4">
+                            <label for="middle-name">Middle name <em class="text-secondary">(optional)</em></label>
+                            <input type="text" placeholder="eg: Doe" class="form-control" name="middle-name">
                         </div>
                     </fieldset>
-                    <fieldset class="personal-details">
-                        <div>
+                    <fieldset class="personal-details row gx-3">
+                        <div class="col-4">
                             <label for="dob">Date of birth</label>
-                            <input type="date" name="dob" id="dob" class="form-control">
+                            <input type="date" name="dob" class="form-control" pattern="\d{2}-\d{2}-\d{4}">
                         </div>
-                        <div>
+                        <div class="col-4 position-relative">
                             <label for="state-of-origin">State of Origin</label>
-                            <select name="state-of-origin" id="state-of-origin" class="form-control">
-                                <option value="abia">Abia</option>
+                            <select name="state-of-origin" class="form-control">
+                                <option value="" disabled selected>Choose...</option>
                             </select>
+                            <i class="fa fa-chevron-down"></i>
                         </div>
-                        <div>
+                        <div class="col-4 position-relative">
                             <label for="lga">LGA</label>
-                            <select name="lga" id="lga" class="form-control">
-                                <option value="nnewi">Nnewi</option>
+                            <select name="lga" class="form-control">
+                                <option value="" disabled selected>Select a state first...</option>
                             </select>
+                            <i class="fa fa-chevron-down"></i>
                         </div>
-                        <div>
+                        <div class="col-4 position-relative">
                             <label for="gender">Gender</label>
-                            <select name="gender" id="gender" class="form-control">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                            <select name="gender" class="form-control">
+                                <option value="" disabled selected>Choose...</option>
                             </select>
+                            <i class="fa fa-chevron-down"></i>
                         </div>
-                        <div>
+                        <div class="col-4 position-relative">
                             <label for="marital-status">Marital Status</label>
-                            <select name="marital-status" id="marital-status" class="form-control">
-                                <option value="single">Single</option>
-                                <option value="married">Married</option>
+                            <select name="marital-status" class="form-control">
+                                <option value="" disabled selected>Choose...</option>
                             </select>
+                            <i class="fa fa-chevron-down"></i>
                         </div>
-                        <div>
+                        <div class="col-4 position-relative">
                             <label for="religion">Religion</label>
-                            <select name="religion" id="religion" class="form-control">
-                                <option value="christianity">Christianity</option>
-                                <option value="islam">Islam</option>
+                            <select name="religion" class="form-control">
+                                <option value="" disabled selected>Choose...</option>
                             </select>
+                            <i class="fa fa-chevron-down"></i>
                         </div>
                     </fieldset>
-                    <fieldset class="contact">
-                        <div>
+                    <fieldset class="contact row gx-3">
+                        <div class="col-8">
                             <label for="address">Address</label>
-                            <textarea name="address" id="address" class="form-control"></textarea>
+                            <input class="form-control" name="address" id="address" type="text" placeholder="Eg: 123 Gotham Street">
                         </div>
-                        <div>
+                        <div class="col-4">
                             <label for="phone">Phone</label>
-                            <input type="tel" name="phone" class="form-control">
+                            <input type="tel" name="phone" class="form-control" placeholder="08012342345">
                         </div>
-                        <div>
+                        <div class="col-4">
                             <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control">
+                            <input type="email" name="email" class="form-control" placeholder="johndoe@gmail.com">
                         </div>
                     </fieldset>
                 </div>
             </div>
-            <div id="educational-history" class="bg-light p-5 rounded-2">
+            <div id="educational-history" class="p-5 rounded-2">
                 <h3>Educational History</h3>
                 <div>
-                    <fieldset class="school-details">
-                        <div>
+                    <fieldset class="education-details row gx-3">
+                        <div class="d-inline-flex justify-content-between align-items-baseline section-control d-none">
+                            <h6 class="mb-3">Education</h6>
+                            <button class="btn btn-outline-danger btn-sm remove-section">Remove</button>
+                        </div>
+                        <div class="col-8">
                             <label for="name-of-institute">Name of institute</label>
-                            <input type="text" name="name-of-institute" class="form-control">
+                            <input type="text" name="name-of-institute" class="form-control" placeholder="University of Nigeria">
                         </div>
-                        <div>
+                        <div class="col-4">
                             <label for="location">Location</label>
-                            <input type="text" name="location" class="form-control">
+                            <input type="text" name="location" class="form-control" placeholder="Nsukka">
                         </div>
-                        <div>
-                            <label for="type">Type of institute</label>
-                            <select name="type" id="type" class="form-control">
-                                <option value="primary">Primary / Elementary</option>
-                                <option value="secondary">Secondary / High school</option>
-                                <option value="tertiary">University / Polytechnic / College</option>
-                                <option value="post-graduate">University / Polytechnic / College</option>
-                                <option value="course">Course / Bootcamp / Workshop</option>
+                        <div class="col-4 position-relative">
+                            <label for="type-of-institute">Type of institute</label>
+                            <select name="type-of-institute" id="type-of-institute" class="form-control">
+                                <option value="" disabled selected>Choose...</option>
                             </select>
+                            <i class="fa fa-chevron-down"></i>
                         </div>
-                        <div>
-                            <label for="qualifiction">Qualification Obtained</label>
+                        <div class="col-4 position-relative">
+                            <label for="qualification">Qualification Obtained</label>
                             <select name="qualification" id="qualification" class="form-control">
-                                <option value="fslc">FSLC</option>
-                                <option value="ssce">SSCE</option>
-                                <option value="neco">NECO</option>
-                                <option value="bsc">B. Sc</option>
-                                <option value="nd">ND</option>
-                                <option value="msc">M. Sc</option>
+                                <option value="" disabled selected>Select an institute first...</option>
                             </select>
+                            <i class="fa fa-chevron-down"></i>
                         </div>
-                        <div>
-                            <label for="started">Started</label>
+                        <div class="col-4">
+                            <label for="started">Started when</label>
                             <input type="date" name="started" id="started" class="form-control">
                         </div>
-                        <div>
-                            <label for="finished">Finished</label>
-                            <input type="date" name="finished" id="finished" class="form-control">
+                        <div class="col-4">
+                            <label for="finished">Finished when</label>
+                            <input type="date" name="finished" class="form-control">
+                            <label for="still-attending" class="mt-2">
+                                <input type="checkbox" class="still-attending"> I've not finished
+                            </label>
                         </div>
                     </fieldset>
                 </div>
+                <button class="btn btn-outline-success fw-semibold add-section">Add Education</button>
             </div>
-            <div id="work-experience"  class="bg-light p-5 rounded-2">
+            <div id="work-experience"  class="p-5 rounded-2">
                 <h3>Work Experience</h3>
                 <div>
-                    <fieldset class="work-details">
-                        <div>
+                    <fieldset class="work-details row gx-3">
+                        <div class="d-inline-flex justify-content-between align-items-baseline section-control d-none">
+                            <h6 class="mb-3">Work</h6>
+                            <button class="btn btn-outline-danger btn-sm remove-section">Remove</button>
+                        </div>
+                        <div class="col-8">
                             <label for="name-of-organization">Name of organization</label>
-                            <input type="text" name="name-of-organization" class="form-control">
+                            <input type="text" name="name-of-organization" class="form-control" placeholder="Acme Inc.">
                         </div>
-                        <div>
+                        <div class="col-4">
                             <label for="position">Position</label>
-                            <input type="text" name="position" class="form-control">
+                            <input type="text" name="position" class="form-control" placeholder="Sales Rep">
                         </div>
-                        <div>
-                            <label for="from">From</label>
-                            <input type="date" name="from" class="form-control">
+                        <div class="col-4">
+                            <label for="workStart">From when</label>
+                            <input type="date" name="work-start" class="form-control">
                         </div>
-                        <div>
-                            <label for="to">To</label>
-                            <input type="date" name="to" class="form-control">
+                        <div class="col-4">
+                            <label for="workEnd" class="d-block">To when</label>
+                            <input type="date" name="work-end" class="form-control">
+                            <label for="still-attending" class="mt-2">
+                                <input type="checkbox" class="still-attending"> I'm still working there
+                            </label>
                         </div>
                     </fieldset>
                 </div>
+                <button class="btn btn-outline-success fw-semibold add-section">Add Work</button>
             </div>
-            <div id="skills"  class="bg-light p-5 rounded-2">
-                <h3>Skills</h3>
-                <div>
-                    <fieldset class="skill">
-                        <input type="text" name="skill" class="form-control">
-                    </fieldset>
-                </div>
-            </div>
-            <div id="referees"  class="bg-light p-5 rounded-2">
+            <div id="referees"  class="p-5 rounded-2">
                 <h3>Referees</h3>
                 <div>
-                    <fieldset class="referee-details">
-                        <div>
-                            <label for="referee-name">Name</label>
-                            <input type="text" name="referee-name" class="form-control">
+                    <fieldset class="referee-details row gx-3">
+                        <div class="d-inline-flex justify-content-between align-items-baseline section-control d-none">
+                            <h6 class="mb-3">Referee</h6>
+                            <button class="btn btn-outline-danger btn-sm remove-section">Remove</button>
                         </div>
-                        <div>
+                        <div class="col-8">
+                            <label for="referee-name">Full Name</label>
+                            <input type="text" name="referee-name" class="form-control" placeholder="Big Man">
+                        </div>
+                        <div class="col-4">
                             <label for="referee-organization">Organization</label>
-                            <input type="text" name="referee-organization" class="form-control">
+                            <input type="text" name="referee-organization" class="form-control" placeholder="Big Man's Company">
                         </div>
-                        <div>
+                        <div class="col-4">
                             <label for="referee-position">Position</label>
-                            <input type="text" name="referee-position" class="form-control">
+                            <input type="text" name="referee-position" class="form-control" placeholder="Big Man's Position">
                         </div>
-                        <div>
+                        <div class="col-4">
                             <label for="referee-contact">Contact</label>
-                            <input type="text" name="referee-contact" class="form-control">
+                            <input type="text" name="referee-contact" class="form-control" placeholder="Big Man's Contact">
                         </div>
                     </fieldset>
                 </div>
+                <button class="btn btn-outline-success fw-semibold add-section">Add Referee</button>
             </div>
-            <button class="btn btn-primary mt-3 w-100" id="generate">Generate Resume</button>
+            <button class="btn btn-primary w-100 btn-lg" id="generate">Generate Resume</button>
         </form>
     </div>
 </body>
