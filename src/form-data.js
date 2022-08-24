@@ -44,7 +44,38 @@ let typesOfInstitute = [
         name: "External (e.g: Course, Bootcamp, Workshop)",
         values: ["Certificate"]
     },
-     
+
 ]
 
-export {states, genders, maritalStatus, religion, typesOfInstitute};
+let formData = {
+    states, genders, maritalStatus, religion, typesOfInstitute
+}
+
+let fillFormData = function (select, selectVals, ...rest) {
+    if (!rest.length) {
+        selectVals.forEach(function (el, index) {
+            select.append(`<option value="${el}">${el}</option>`);
+        })
+    } else {
+        selectVals.forEach(function (el, index) {
+            select.append(`<option value="${el.name}">${el.name}</option>`);
+        })
+
+        let update = rest[0];
+
+        select.on('change', function () {
+            let values = selectVals.find((el, index) => {
+                return (el.name == select.val())
+            }).values;
+
+            update.children().remove()
+            update.append(`<option value="" disabled selected>Choose...</option>`);
+
+            values.forEach(function (val) {
+                update.append(`<option value="${val}">${val}</option>`);
+            })
+        })
+    }
+}
+
+export {formData, fillFormData};

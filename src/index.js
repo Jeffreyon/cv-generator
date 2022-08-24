@@ -14,51 +14,28 @@ import '../fontawesome/css/all.css'
 import {templates} from './templatesImporter.js';
 
 // form-data
-import * as formData from './form-data.js'
+import {formData, fillFormData} from './form-data.js'
 
-
-function fillFormData (select, selectVals, ...rest) {
-    if(!rest.length){
-        selectVals.forEach(function(el, index){
-            select.append(`<option value="${el}">${el}</option>`);
-        })
-    } else {
-        selectVals.forEach(function(el, index){
-            select.append(`<option value="${el.name}">${el.name}</option>`);
-        })
-        
-        let update = rest[0];
-
-        select.on('change', function(){
-            let values = selectVals.find((el, index) => {
-                return (el.name == select.val())
-            }).values;
-            
-            update.children().remove()
-            update.append(`<option value="" disabled selected>Choose...</option>`);
-    
-            values.forEach(function(val){
-                update.append(`<option value="${val}">${val}</option>`);
-            })
-        })
-    }
-}
+// components
+import { AddEducation } from "./components/addEducation";
+import { AddWork } from "./components/addWork";
 
 $(window).on('load', function(){
     // build states options in select
     let statesSelect = $('select[name="state-of-origin"]');
     let lgaSelect = $('select[name="lga"]');
-    let instituteSelect = $('select[name="type-of-institute"]');
-    let qualificationSelect = $('select[name="qualification"]');
     let genderSelect = $('select[name="gender"]');
     let maritalStatusSelect = $('select[name="marital-status"]');
     let religionSelect = $('select[name="religion"]');
 
     fillFormData(statesSelect, formData.states, lgaSelect);
-    fillFormData(instituteSelect, formData.typesOfInstitute, qualificationSelect);
     fillFormData(genderSelect, formData.genders)
     fillFormData(maritalStatusSelect, formData.maritalStatus)
     fillFormData(religionSelect, formData.religion)
+
+    // append addEducation component
+    $('#educational-history > div').append(new AddEducation)
+    $('#work-experience > div').append(new AddWork)
 })
 
 
@@ -66,28 +43,19 @@ $(window).on('load', function(){
 // Dom manipulation
 $('.add-section').on('click', function(e){
     e.preventDefault()
-    // get the list of fieldsets that are descendants of the sibling div to this element
+  
     let sectionsContainer = $(this).prev('div');
-    
-    // duplicate the first element and reset its inputs and append it to the sibling div
-    sectionsContainer.children('fieldset').first().clone(true).hide().appendTo(sectionsContainer).slideToggle(100).find('input').each(function(){
-        $(this).val(null);
-    })
+    let newSection;
 
-    // add an event handler to the remove buttons
-    $('.remove-section').on('click', function(e){
-        e.preventDefault();
+    switch (sectionsContainer.parent().attr('id')) {
+        case "work-experience":
+            newSection = new AddWork;
+            break;
+        case "educational-history":
+            newSection = new AddEducation;
+    }
 
-        // remove the parent fieldset from the dom when its remove button is clicked
-        $(this).closest('fieldset').slideToggle(100, function(){
-            $(this).remove();
-        })
-
-        // hack for hiding the remove button of the last fieldset
-        if(sectionsContainer.children().length == 2) {
-            sectionsContainer.children().not($(this).closest('fieldset')).children('div.section-control').addClass('d-none');
-        }
-    })
+    sectionsContainer.append(newSection);
 
     if(sectionsContainer.children().length > 1){
         if(sectionsContainer.children().length == 2) sectionsContainer.children().first().children('div.section-control').removeClass('d-none');
