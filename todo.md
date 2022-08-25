@@ -6,9 +6,8 @@
 - install lodash to enable capitalization of field values
 - use javascript to set the value of 'still-attending' checkboxes
 - create a much cleaner way to read form data
-- add conditional logic to the middle-name section in the template so it can be shown depending if the value is present
 - scrape data for the select fields form data
-- learn how to clone jquery elements with a default state in the app
+- learn how to import json files
 
 
 ## Expand knowledge
@@ -19,3 +18,4 @@
 - Imagine using javascript to build html forms
 - learn how to use bootstrap with relevant tutorials
 - learn how to use handlebars templating in webpack
+- learn react

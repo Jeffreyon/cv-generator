@@ -15,7 +15,8 @@
     "docxtemplater": "^3.31.2",
     "file-saver": "^2.0.5",
     "jquery": "^3.6.0",
-    "pizzip": "^3.1.1"
+    "pizzip": "^3.1.1",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "css-loader": "^6.7.1",

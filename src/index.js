@@ -14,11 +14,12 @@ import '../fontawesome/css/all.css'
 import {templates} from './templatesImporter.js';
 
 // form-data
-import {formData, fillFormData} from './form-data.js'
+import {formData, fillFormData} from './lib/form-data.js'
 
 // components
 import { AddEducation } from "./components/addEducation";
 import { AddWork } from "./components/addWork";
+import { AddReferee } from "./components/addReferee";
 
 $(window).on('load', function(){
     // build states options in select
@@ -36,6 +37,7 @@ $(window).on('load', function(){
     // append addEducation component
     $('#educational-history > div').append(new AddEducation)
     $('#work-experience > div').append(new AddWork)
+    $('#referees > div').append(new AddReferee)
 })
 
 
@@ -53,6 +55,10 @@ $('.add-section').on('click', function(e){
             break;
         case "educational-history":
             newSection = new AddEducation;
+            break;
+        case "referees":
+            newSection = new AddReferee;
+            break;
     }
 
     sectionsContainer.append(newSection);
@@ -127,7 +133,6 @@ document.getElementById('generate').addEventListener('click', function (e){
 
     let profile = getSection('#profile-information')
 
-    // if profile.length is not 3, terminate program
     
     let resume = {
         name: profile[0],

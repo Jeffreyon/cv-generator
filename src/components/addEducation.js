@@ -1,5 +1,5 @@
 import * as $ from 'jquery';
-import {formData, fillFormData} from '../form-data.js'
+import {formData, fillFormData} from '../lib/form-data.js'
 import { handler as removeSectionEventHandler } from '../lib/removeSectionEventHandler.js';
 import { handler as stillAttendingEventHandler } from '../lib/stillAttendingEventHandler.js';
 
