@@ -4,10 +4,12 @@
 - customize bootstrap design system
 - install font-awesome
 - install lodash to enable capitalization of field values
-- use javascript to set the value of 'still-attending' checkboxes
 - create a much cleaner way to read form data
 - scrape data for the select fields form data
 - learn how to import json files
+- turn docx object into an image based pdf
+- learn how to optimize external imports
+- host site on heroku
 
 
 ## Expand knowledge

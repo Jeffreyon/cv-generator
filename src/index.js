@@ -2,11 +2,11 @@
 import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
-import * as $ from 'jquery';
+import $ from 'jquery/dist/jquery.slim.min.js';
 
 // css
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import './index.css';
 import '../fontawesome/css/all.css'
 

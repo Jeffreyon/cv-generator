@@ -30,7 +30,8 @@ form fieldset:not(form fieldset:first-child) {
 
 @media (min-width: 750px) {
     form.form-md {
-        min-width: 500px;
+        min-width: 700px;
+        max-width: 850px;
     }
 }
 
@@ -42,6 +43,14 @@ select {
     background-color: white !important;
     box-shadow: 0 2px 3px 0px #b6b6b673;
     position: relative;
+}
+
+.logo {
+    background-color: #d9ffdf;
+    color: #269303;
+    padding: 2px 16px;
+    border-radius: 50px;
+    border: 1px dashed #269303;
 }
 
 select + i {

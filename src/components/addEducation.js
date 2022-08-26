@@ -10,33 +10,33 @@ class AddEducation {
             <h6 class="mb-3">Education</h6>
             <button class="btn btn-outline-danger btn-sm remove-section">Remove</button>
         </div>
-        <div class="col-8">
+        <div class="col-12 col-sm-6 col-md-8">
             <label for="name-of-institute">Name of institute</label>
             <input type="text" name="name-of-institute" class="form-control" placeholder="University of Nigeria">
         </div>
-        <div class="col-4">
+        <div class="col-12 col-sm-6 col-md-4">
             <label for="location">Location</label>
             <input type="text" name="location" class="form-control" placeholder="Nsukka">
         </div>
-        <div class="col-4 position-relative">
+        <div class="col-12 col-sm-6 col-md-4 position-relative">
             <label for="type-of-institute">Type of institute</label>
             <select name="type-of-institute" id="type-of-institute" class="form-control">
                 <option value="" disabled selected>Choose...</option>
             </select>
             <i class="fa fa-chevron-down"></i>
         </div>
-        <div class="col-4 position-relative">
+        <div class="col-12 col-sm-6 col-md-4 position-relative">
             <label for="qualification">Qualification Obtained</label>
             <select name="qualification" id="qualification" class="form-control">
                 <option value="" disabled selected>Select an institute first...</option>
             </select>
             <i class="fa fa-chevron-down"></i>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-sm-6 col-md-4">
             <label for="started">Started when</label>
             <input type="date" name="started" id="started" class="form-control">
         </div>
-        <div class="col-4">
+        <div class="col-12 col-sm-6 col-md-4">
             <label for="finished">Finished when</label>
             <input type="date" name="finished" class="form-control">
             <label for="still-attending" class="mt-2">

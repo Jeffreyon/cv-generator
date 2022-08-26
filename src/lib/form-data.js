@@ -1,4 +1,4 @@
-import * as data from './states.json'
+// TODO: import states from json file
 
 let states = [
     {

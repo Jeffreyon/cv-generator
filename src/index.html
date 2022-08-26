@@ -11,58 +11,60 @@
 <body class="container bg-light">
     <div class="row">
         <form class="col-xs-12 col-md-8 my-5 m-auto form-md">
-            <h1 class="text-center">Create a <span class="text-primary">Beautiful Resume</span> in 2 mins</h1>
-            <div id="profile-information" class="p-5 rounded-2">
+            <article class="fw-bold mb-3 d-flex justify-content-center"><span class="logo">CV GENERATOR</span></article>
+            <h1 class="text-center">Create a <span class="text-primary">Professional CV</span> in 2 mins</h1>
+            <p class="text-center mt-4">For best results, fill all fields except those marked <em>optional</em> or disabled</p>
+            <div id="profile-information" class="p-3 p-sm-5 rounded-2">
                 <h3>Profile Information</h3>
                 <div>
                     <fieldset class="user-name row gx-3">
-                        <div class="col-4">
+                        <div class="col-12 col-sm-6 col-md-4">
                             <label for="first-name">First name</label>
                             <input type="text" placeholder="eg: John" class="form-control" name="first-name" required>
                         </div>
-                        <div class="col-4">
+                        <div class="col-12 col-sm-6 col-md-4">
                             <label for="last-name">Last name</label>
                             <input type="text" placeholder="eg: Doe" class="form-control" name="last-name">
                         </div>
-                        <div class="col-4">
+                        <div class="col-12 col-sm-6 col-md-4">
                             <label for="middle-name">Middle name <em class="text-secondary">(optional)</em></label>
                             <input type="text" placeholder="eg: Doe" class="form-control" name="middle-name">
                         </div>
                     </fieldset>
                     <fieldset class="personal-details row gx-3">
-                        <div class="col-4">
+                        <div class="col-12 col-sm-6 col-md-4">
                             <label for="dob">Date of birth</label>
                             <input type="date" name="dob" class="form-control" pattern="\d{2}-\d{2}-\d{4}">
                         </div>
-                        <div class="col-4 position-relative">
+                        <div class="col-12 col-sm-6 col-md-4 position-relative">
                             <label for="state-of-origin">State of Origin</label>
                             <select name="state-of-origin" class="form-control">
                                 <option value="" disabled selected>Choose...</option>
                             </select>
                             <i class="fa fa-chevron-down"></i>
                         </div>
-                        <div class="col-4 position-relative">
+                        <div class="col-12 col-sm-6 col-md-4 position-relative">
                             <label for="lga">LGA</label>
                             <select name="lga" class="form-control">
                                 <option value="" disabled selected>Select a state first...</option>
                             </select>
                             <i class="fa fa-chevron-down"></i>
                         </div>
-                        <div class="col-4 position-relative">
+                        <div class="col-12 col-sm-6 col-md-4 position-relative">
                             <label for="gender">Gender</label>
                             <select name="gender" class="form-control">
                                 <option value="" disabled selected>Choose...</option>
                             </select>
                             <i class="fa fa-chevron-down"></i>
                         </div>
-                        <div class="col-4 position-relative">
+                        <div class="col-12 col-sm-6 col-md-4 position-relative">
                             <label for="marital-status">Marital Status</label>
                             <select name="marital-status" class="form-control">
                                 <option value="" disabled selected>Choose...</option>
                             </select>
                             <i class="fa fa-chevron-down"></i>
                         </div>
-                        <div class="col-4 position-relative">
+                        <div class="col-12 col-sm-6 col-md-4 position-relative">
                             <label for="religion">Religion</label>
                             <select name="religion" class="form-control">
                                 <option value="" disabled selected>Choose...</option>
@@ -71,40 +73,41 @@
                         </div>
                     </fieldset>
                     <fieldset class="contact row gx-3">
-                        <div class="col-8">
+                        <div class="col-12 col-md-8">
                             <label for="address">Address</label>
                             <input class="form-control" name="address" id="address" type="text" placeholder="Eg: 123 Gotham Street">
                         </div>
-                        <div class="col-4">
+                        <div class="col-12 col-sm-6 col-md-4">
                             <label for="phone">Phone</label>
                             <input type="tel" name="phone" class="form-control" placeholder="08012342345">
                         </div>
-                        <div class="col-4">
+                        <div class="col-12 col-sm-6 col-md-4">
                             <label for="email">Email</label>
                             <input type="email" name="email" class="form-control" placeholder="johndoe@gmail.com">
                         </div>
                     </fieldset>
                 </div>
             </div>
-            <div id="educational-history" class="p-5 rounded-2">
+            <div id="educational-history" class="p-3 p-sm-5 rounded-2">
                 <h3>Educational History</h3>
                 <div>
                 </div>
-                <button class="btn btn-outline-success fw-semibold add-section">Add Education</button>
+                <button class="btn btn-outline-success fw-semibold add-section"><i class="fa fa-plus"></i> Add Education</button>
             </div>
-            <div id="work-experience"  class="p-5 rounded-2">
+            <div id="work-experience"  class="p-3 p-sm-5 rounded-2">
                 <h3>Work Experience</h3>
                 <div>
                 </div>
-                <button class="btn btn-outline-success fw-semibold add-section">Add Work</button>
+                <button class="btn btn-outline-success fw-semibold add-section"><i class="fa fa-plus"></i> Add Work</button>
             </div>
-            <div id="referees"  class="p-5 rounded-2">
+            <div id="referees"  class="p-3 p-sm-5 rounded-2">
                 <h3>Referees</h3>
                 <div>
                 </div>
-                <button class="btn btn-outline-success fw-semibold add-section">Add Referee</button>
+                <button class="btn btn-outline-success fw-semibold add-section"><i class="fa fa-plus"></i> Add Referee</button>
             </div>
-            <button class="btn btn-primary w-100 btn-lg" id="generate">Generate Resume</button>
+            <button class="btn btn-primary w-100 btn-lg" id="generate">Generate CV</button>
+            <footer class="mt-5 mb-3 text-center text-secondary">Made with <i class="fa fa-heart"></i> and <i class="fa fa-coffee"></i> by Jeffrey Onuigbo</footer>
         </form>
     </div>
 </body>
