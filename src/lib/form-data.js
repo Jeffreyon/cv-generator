@@ -208,7 +208,7 @@ let states = [
         ]
     },
     {
-        "name": "Cross",
+        "name": "Cross-River",
         "values": [
             "Akpabuyo",
             "Odukpani",
