@@ -72,8 +72,13 @@ select + i {
     background-size: contain;
 }
 
+.modal-body .template-image:hover {
+    box-shadow: 0 5px 10px 2px rgb(159 159 159 / 45%);
+    transition: .2s ease-out;
+}
+
 .template-selected {
-    border: 4px solid rgba(0, 132, 255, 0.39) !important;
+    box-shadow: 0 0 0 0.25rem rgba(49, 131, 253, 0.5) !important;
     border-radius: 6px !important;
 }
 

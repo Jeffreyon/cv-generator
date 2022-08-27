@@ -71,23 +71,12 @@ $('.add-section').on('click', function(e){
     }
 });
 
-$('.still-attending').on('click', function(e){
-    let finished = $(this).parent().prev("input")
-    
-    if(!finished.attr('readonly')) {
-        finished.attr('readonly', true).attr("type", "text").val("Present").parent().addClass('disabled')
-    } else {
-        finished.removeAttr('readonly').attr("type", "date").parent().removeClass('disabled')
-    }
-});
-
 let chosenTemplate;
 
 $('label[for="resume-template"]').on('click', function(e){
     e.preventDefault();
 
     chosenTemplate = $('input[name="resume-template"]').val();
-    console.log(chosenTemplate)
     $(this).addClass('template-selected');
 })
 
