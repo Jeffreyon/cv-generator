@@ -1,4 +1,3 @@
-- parts of dist folder doesn't get ignored upon including the entire sub directory in .gitignore
 - learn how to optimize webpack
 - validate resume object using validator module from npm
 - customize bootstrap design system
@@ -9,7 +8,8 @@
 - learn how to import json files
 - turn docx object into an image based pdf
 - learn how to optimize external imports
-- host site on heroku
+- host site on netlify or AWS
+- create carousel so user can choose a template or a grid of 6
 
 
 ## Expand knowledge

@@ -18,6 +18,10 @@ class AddWork {
             <input type="text" name="position" class="form-control" placeholder="Sales Rep">
         </div>
         <div class="col-12 col-sm-6 col-md-4">
+            <label for="work-location">Location</label>
+            <input type="text" name="work-location" class="form-control" placeholder="e.g: Lagos">
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
             <label for="workStart">From when</label>
             <input type="date" name="work-start" class="form-control">
         </div>

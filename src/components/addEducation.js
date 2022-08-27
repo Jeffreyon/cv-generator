@@ -16,7 +16,7 @@ class AddEducation {
         </div>
         <div class="col-12 col-sm-6 col-md-4">
             <label for="location">Location</label>
-            <input type="text" name="location" class="form-control" placeholder="Nsukka">
+            <input type="text" name="location" class="form-control" placeholder="e.g: Nsukka">
         </div>
         <div class="col-12 col-sm-6 col-md-4 position-relative">
             <label for="type-of-institute">Type of institute</label>

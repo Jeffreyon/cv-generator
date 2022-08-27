@@ -79,9 +79,17 @@ $('.still-attending').on('click', function(e){
     } else {
         finished.removeAttr('readonly').attr("type", "date").parent().removeClass('disabled')
     }
+});
+
+let chosenTemplate;
+
+$('label[for="resume-template"]').on('click', function(e){
+    e.preventDefault();
+
+    chosenTemplate = $('input[name="resume-template"]').val();
+    console.log(chosenTemplate)
+    $(this).addClass('template-selected');
 })
-
-
 
 document.getElementById('generate').addEventListener('click', function (e){
     e.preventDefault();
@@ -143,7 +151,7 @@ document.getElementById('generate').addEventListener('click', function (e){
         referees: getSection('#referees')
     }
 
-    return generateResume(resume, "simple");
+    return generateResume(resume, chosenTemplate);
 })
 
 // on submit, retrieve and organize the resume object then pass it and a template name to a generate function
