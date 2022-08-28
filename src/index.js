@@ -110,7 +110,7 @@ document.getElementById('generate').addEventListener('click', function (e){
     function getSection(section){
         let all = []
         $(`${section} fieldset`).each(function(){
-            let set = arrToObj($(this).find('input, select').serializeArray())
+            let set = arrToObj($(this).find('input, select, textarea').serializeArray())
 
             if(Object.keys(set).length == 0) return;
             
