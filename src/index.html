@@ -114,8 +114,8 @@
                 <button class="btn btn-outline-success fw-semibold add-section"><i class="fa fa-plus"></i> Add
                     Referee</button>
             </div>
-            <button id="choose-template" type="button" class="btn btn-primary w-100 btn-lg" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
+            <button id="choose-template" type="button" class="btn btn-primary w-100 btn-lg shadow-lg" data-bs-toggle="modal"
+                data-bs-target="#choose-template-modal">
                 Continue
             </button>
             <footer class="mt-5 mb-3 text-center text-secondary">Made with <i class="fa fa-heart"></i> and <i
@@ -125,18 +125,18 @@
     </div>
     <div id="template-picker">
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="choose-template-modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Choose a template</h5>
+                        <h5 class="modal-title" id="modal-label">Choose a template</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body row">
                         <label for="resume-template" class="col-12 template-image m-auto"><input type="radio" name="resume-template" value="simple" checked></label>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary w-100 btn-lg" id="generate">Create your CV</button>
+                        <button class="btn btn-primary w-100 btn-lg shadow-lg" id="generate">Create your CV</button>
                     </div>
                 </div>
             </div>
