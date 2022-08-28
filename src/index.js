@@ -148,10 +148,10 @@ document.getElementById('generate').addEventListener('click', function (e){
 async function generateResume(resumeObj, template){
     // TODO: validate resumeObj for required fields
 
-    if(!resumeObj){
-        throw new Error('Resume is undefined')
+    if(!isInvalid(resumeObj)){
+        alert('Some fields are missing, complete the form to continue');
     } else if(!template || templates.findIndex((elem) => elem.name == template) == -1){
-        throw new Error('Template invalid or does not exist')
+        alert('You need to select a template first. Click on the template to select it');
     } else {
         let templatePath = templates.find((elem) => elem.name == template).path;
         
@@ -168,7 +168,11 @@ async function generateResume(resumeObj, template){
         })
 
         // prompt user to save the file
-        return saveAs(out, `${resumeObj.name['first-name']}'s resume.docx`);
+        try {
+            saveAs(out, `${resumeObj.name['first-name']}'s resume.docx`);
+        } catch (error) {
+            alert('Some fields are missing, complete the form to continue');
+        }
     }
 }
 
@@ -201,27 +205,11 @@ async function loadTemplate(path) {
     return content;
 }
 
-function populate() {
-    return {
-        name: {
-            "first-name": "Jeffrey",
-            "last-name": "Onuigbo"
-        },
-        profile: {
-            "dob": "Sep 24, 2000",
-            "gender": "male",
-            "religion": "christianity"
-        },
-        contact: {
-            "address": "Abacha Rd, Nasarawa",
-            "phone": "08085709543",
-            "email": "jeffreyon11@gmail.com"
-        },
-        educationalHistory: [
-            {
-                "name-of-institute": "University of Nigeria Nsukka",
-                "location": "Enugu"
-            }
-        ]
+function isInvalid(resume){
+    let flag
+    for (const key in resume) {
+        if(resume[key] == undefined || (Array.isArray(resume[key]) && !resume[key].length)) flag = false;
+        else flag = true;
     }
+    return flag;
 }
