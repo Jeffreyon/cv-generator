@@ -45,6 +45,10 @@ select {
     position: relative;
 }
 
+select:hover {
+    cursor: pointer;
+}
+
 .logo {
     background-color: #d9ffdf;
     color: #269303;
@@ -75,6 +79,7 @@ select + i {
 .modal-body .template-image:hover {
     box-shadow: 0 5px 10px 2px rgb(159 159 159 / 45%);
     transition: .2s ease-out;
+    cursor: pointer;
 }
 
 .template-selected {
