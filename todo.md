@@ -4,11 +4,9 @@
 - install font-awesome
 - install lodash to enable capitalization of field values
 - create a much cleaner way to read form data
-- scrape data for the select fields form data
+- continue scraping data for the select fields form data
 - learn how to import json files
-- turn docx object into an image based pdf
-- learn how to optimize external imports
-- host site on netlify or AWS
+- turn docx object into a pdf
 - create carousel so user can choose a template or a grid of 6
 
 

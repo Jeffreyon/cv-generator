@@ -92,3 +92,8 @@ input[name="resume-template"] {
     -moz-appearance: none;
     appearance: none;
 }
+
+.invalid-input {
+    border: 1px solid #fe8686;
+    box-shadow: 0 0 0 0.25rem rgb(253 13 13 / 25%);
+}

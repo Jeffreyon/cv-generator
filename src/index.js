@@ -2,7 +2,7 @@
 import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
-import $ from 'jquery/dist/jquery.slim.min.js';
+import * as $ from 'jquery/dist/jquery.slim.min.js';
 
 // css
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -150,6 +150,7 @@ async function generateResume(resumeObj, template){
 
     if(!isInvalid(resumeObj)){
         alert('Some fields are missing, complete the form to continue');
+        return searchForErrors();
     } else if(!template || templates.findIndex((elem) => elem.name == template) == -1){
         alert('You need to select a template first. Click on the template to select it');
     } else {
@@ -172,6 +173,7 @@ async function generateResume(resumeObj, template){
             saveAs(out, `${resumeObj.name['first-name']}'s resume.docx`);
         } catch (error) {
             alert('Some fields are missing, complete the form to continue');
+            return searchForErrors();
         }
     }
 }
@@ -212,4 +214,26 @@ function isInvalid(resume){
         else flag = true;
     }
     return flag;
+}
+
+function searchForErrors(){
+    let allInvalid = $('input, select, textarea')
+
+    allInvalid.each(function(){
+        if($(this).val() == undefined || $(this).val() == "") {
+            $(this).addClass('invalid-input').on('change', function(){
+                $(this).removeClass('invalid-input')
+            })
+        }
+    });
+
+    let first = allInvalid.first();
+    window.scroll({
+        top: first,
+        behavior: 'smooth'
+    })
+
+    // reset the modal's effect on the layout
+    $('#template-picker, .modal-backdrop').hide();
+    $('body').css('overflow', 'auto')
 }
