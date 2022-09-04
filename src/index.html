@@ -114,8 +114,7 @@
                 <button class="btn btn-outline-success fw-semibold add-section"><i class="fa fa-plus"></i> Add
                     Referee</button>
             </div>
-            <button id="choose-template" type="button" class="btn btn-primary w-100 btn-lg shadow-lg" data-bs-toggle="modal"
-                data-bs-target="#choose-template-modal">
+            <button id="choose-template" type="button" class="btn btn-primary w-100 btn-lg shadow-lg" data-bs-toggle="modal">
                 Continue
             </button>
             <footer class="mt-5 mb-3 text-center text-secondary">Made with <i class="fa fa-heart"></i> and <i
@@ -126,7 +125,7 @@
     <div id="template-picker">
         <!-- Modal -->
         <div class="modal fade" id="choose-template-modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header border-0">
                         <h5 class="modal-title" id="modal-label">Choose a template</h5>
@@ -139,6 +138,16 @@
                         <button class="btn btn-primary w-100 btn-lg shadow-lg" id="generate">Create your resume</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div id="alertNotification" class="toast align-items-center bg-danger text-light border-0 fs-6 shadow-sm" data-bs-animation="true" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Some fields are missing, complete the form to continue
+                </div>
+                <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         </div>
     </div>

@@ -97,3 +97,9 @@ input[name="resume-template"] {
     border: 1px solid #fe8686;
     box-shadow: 0 0 0 0.25rem rgb(253 13 13 / 25%);
 }
+
+.toast {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 16px;
+}

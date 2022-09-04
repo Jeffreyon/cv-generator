@@ -1,5 +1,4 @@
 - learn how to optimize webpack
-- validate resume object using validator module from npm
 - customize bootstrap design system
 - install font-awesome
 - install lodash to enable capitalization of field values

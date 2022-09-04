@@ -6,7 +6,7 @@ import * as $ from 'jquery/dist/jquery.slim.min.js';
 
 // css
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import * as bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
 import './index.css';
 import '../fontawesome/css/all.css'
 
@@ -80,6 +80,36 @@ $('label[for="resume-template"]').on('click', function(e){
     $(this).addClass('template-selected');
 })
 
+// validate before choosing template
+$('#choose-template').on('click', function(){
+    let templateModal = new bootstrap.Modal('#choose-template-modal');
+    let invalid = searchForErrors();
+
+    if(invalid.length) {
+        // alert user
+        let alertNotification = $('#alertNotification');
+        let toast = new bootstrap.Toast(alertNotification)
+
+        toast.show();
+        // errors involved
+        invalid.forEach(function(field, i){
+            $(field).addClass('invalid-input').on('change', function(){
+                $(field).removeClass('invalid-input')
+            })
+        })
+
+        let first = invalid[0];
+        let coords = getCoords(first);
+
+        window.scroll({
+            top: coords.top - 100,
+            behavior: 'smooth'
+        })
+    } else {
+        templateModal.show()
+    }
+})
+
 document.getElementById('generate').addEventListener('click', function (e){
     e.preventDefault();
 
@@ -146,13 +176,11 @@ document.getElementById('generate').addEventListener('click', function (e){
 // on submit, retrieve and organize the resume object then pass it and a template name to a generate function
 
 async function generateResume(resumeObj, template){
-    // TODO: validate resumeObj for required fields
-
+    // validate resumeObj for required fields
     if(!isInvalid(resumeObj)){
-        alert('Some fields are missing, complete the form to continue');
-        return searchForErrors();
+        return alert('Some fields are missing, complete the form to continue');
     } else if(!template || templates.findIndex((elem) => elem.name == template) == -1){
-        alert('You need to select a template first. Click on the template to select it');
+        return alert('You need to select a template first. Click on the template to select it');
     } else {
         let templatePath = templates.find((elem) => elem.name == template).path;
         
@@ -217,23 +245,24 @@ function isInvalid(resume){
 }
 
 function searchForErrors(){
-    let allInvalid = $('input, select, textarea')
+    let fields = $('input, select, textarea')
+    let invalid = [];
 
-    allInvalid.each(function(){
+    fields.each(function(){
         if($(this).val() == undefined || $(this).val() == "") {
-            $(this).addClass('invalid-input').on('change', function(){
-                $(this).removeClass('invalid-input')
-            })
+            invalid.push(this);
         }
     });
 
-    let first = allInvalid.first();
-    window.scroll({
-        top: first,
-        behavior: 'smooth'
-    })
+    return invalid;
+}
 
-    // reset the modal's effect on the layout
-    $('#template-picker, .modal-backdrop').hide();
-    $('body').css('overflow', 'auto')
+function getCoords(elem) {   
+	let box = elem.getBoundingClientRect();    
+	return {     
+		top: box.top + window.pageYOffset,     
+		right: box.right + window.pageXOffset,     
+		bottom: box.bottom + window.pageYOffset,     
+		left: box.left + window.pageXOffset   
+	}; 
 }
