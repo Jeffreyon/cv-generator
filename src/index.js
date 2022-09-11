@@ -1,8 +1,8 @@
 // js
-import Docxtemplater from "docxtemplater";
-import PizZip from "pizzip";
 import { saveAs } from "file-saver";
 import * as $ from 'jquery/dist/jquery.slim.min.js';
+import {createDocFromTemplate} from './lib/createDocFromTemplate.js'
+import { convertToPdf } from "./lib/convertToPdf.js";
 
 // css
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -196,6 +196,10 @@ async function generateResume(resumeObj, template){
             compression: "DEFLATE",
         })
 
+        let pdf = await convertToPdf(out);
+
+        console.log(pdf)
+
         // prompt user to save the file
         try {
             saveAs(out, `${resumeObj.name['first-name']}'s resume.docx`);
@@ -204,35 +208,6 @@ async function generateResume(resumeObj, template){
             return searchForErrors();
         }
     }
-}
-
-// returns a docxtemplater object from an arraybuffer
-async function createDocFromTemplate(path){
-    // load the docx file as an arrayBuffer from the server
-    let data = await loadTemplate(path);
-    
-    // convert it into a zip file
-    let zip = PizZip(data)
-
-    // configure Docxtemplater with the zipped file as a template
-    let doc = new Docxtemplater(zip, {
-        paragraphLoop: true,
-        linebreaks: true
-    })
-
-    return doc;
-}
-
-// Load template as an arraybuffer
-async function loadTemplate(path) {
-    let response = await fetch(path);
-
-    if(response.status != 200) {
-        return console.error("Server Error")
-    }
-
-    let content = await response.arrayBuffer();
-    return content;
 }
 
 function isInvalid(resume){
