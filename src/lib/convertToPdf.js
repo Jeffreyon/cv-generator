@@ -16,7 +16,7 @@ async function convertToPdf(docBlob) {
         let options = {
             method: 'POST',
             headers: new Headers({
-                'Authorization': 'Bearer pdf_live_m0lpsOsT1VSsBmu6opb2opmIBWx0F8PD3laaSLSIwUy',
+                'Authorization': // add authorization key from pspdfkit
                 "Content-type": 'multipart/form-data'
             }),
             body: formData
